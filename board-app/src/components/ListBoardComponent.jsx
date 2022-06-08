@@ -19,7 +19,7 @@ class ListBoardComponent extends Component {
     }
 
     createBoard() {
-        this.props.history.push('/create-board/_create');
+        this.props.history.push('/create-board');
     }
 
     readBoard(comId) {

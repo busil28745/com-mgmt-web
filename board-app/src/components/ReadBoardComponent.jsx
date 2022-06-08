@@ -10,7 +10,7 @@ class ReadBoardComponent extends Component {
             board: {}
         }
 
-        this.goToUpdate = this.goToUpdate.bind(this);
+        // this.goToUpdate = this.goToUpdate.bind(this);
 
     }
 

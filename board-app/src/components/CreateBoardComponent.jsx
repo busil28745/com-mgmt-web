@@ -19,11 +19,10 @@ class CreateBoardComponent extends Component {
 
         this.changeComIdHandler = this.changeComIdHandler.bind(this);
         this.changeComNmHandler = this.changeComNmHandler.bind(this);
-        this.changeComDescHandler = this.changeComDescHandler(this);
-        this.changeEduTypeCdHandler = this.changeEduTypeCdHandler(this);
-        this.changeTelNumHandler = this.changeTelNumHandler(this);
-        this.changeAddrHandler = this.changeAddrHandler(this);
-
+        this.changeComDescHandler = this.changeComDescHandler.bind(this);
+        this.changeEduTypeCdHandler = this.changeEduTypeCdHandler.bind(this);
+        this.changeTelNumHandler = this.changeTelNumHandler.bind(this);
+        this.changeAddrHandler = this.changeAddrHandler.bind(this);
         this.createBoard = this.createBoard.bind(this);
     }
 
@@ -39,12 +38,15 @@ class CreateBoardComponent extends Component {
     changeComDescHandler = (event) => {
         this.setState({comDesc: event.target.value});
     }
+
     changeEduTypeCdHandler = (event) => {
         this.setState({ eduTypeCd : event.target.value});
     }
+
     changeTelNumHandler = (event) => {
         this.setState({telNum: event.target.value});
     }
+
     changeAddrHandler = (event) => {
         this.setState({ addr : event.target.value});
     }

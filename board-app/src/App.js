@@ -17,7 +17,7 @@ function App() {
             <Switch>
               <Route path = "/" exact component = {ListBoardComponent}></Route>
               <Route path = "/board" component = {ListBoardComponent}></Route>
-              <Route path = "/create-board/:comId" component = {CreateBoardComponent}></Route>
+              <Route path = "/create-board" component = {CreateBoardComponent}></Route>
               <Route path = "/read-board/:comId" component = {ReadBoardComponent}></Route>
               <Route path = "/member-join" component = {JoinMemberComponent}></Route>
             </Switch>
