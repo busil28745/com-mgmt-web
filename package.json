@@ -9,10 +9,11 @@
     "axios": "^0.21.4",
     "bootstrap": "^4.6.1",
     "chokidar": "^3.5.3",
+    "global": "^4.4.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.3.3",
-    "react-scripts": "4.0.0",
+    "react-scripts": "^5.0.1",
     "web-vitals": "^0.2.4"
   },
   "scripts": {

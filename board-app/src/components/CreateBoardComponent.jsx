@@ -6,88 +6,73 @@ class CreateBoardComponent extends Component {
         super(props);
 
         this.state = {
-            no: this.props.match.params.no,
-            type: 1,
-            title: '',
-            contents: '',
-            memberNo: ''
+
+            comId : '',
+            comNm : '',
+            comDesc : '',
+            eduTypeCd : '',
+            telNum : '',
+            addr : '',
+            stuNum : '',
+
         }
 
-        this.changeTypeHandler = this.changeTypeHandler.bind(this);
-        this.changeTitleHandler = this.changeTitleHandler.bind(this);
-        this.changeContentsHandler = this.changeContentsHandler.bind(this);
-        this.changeMemberNoHandler = this.changeMemberNoHandler.bind(this);
+        this.changeComIdHandler = this.changeComIdHandler.bind(this);
+        this.changeComNmHandler = this.changeComNmHandler.bind(this);
+        this.changeComDescHandler = this.changeComDescHandler(this);
+        this.changeEduTypeCdHandler = this.changeEduTypeCdHandler(this);
+        this.changeTelNumHandler = this.changeTelNumHandler(this);
+        this.changeAddrHandler = this.changeAddrHandler(this);
+
         this.createBoard = this.createBoard.bind(this);
     }
 
 
-    changeTypeHandler = (event) => {
-        this.setState({type: event.target.value});
+    changeComIdHandler = (event) => {
+        this.setState({comId: event.target.value});
     }
 
-    changeTitleHandler = (event) => {
-        this.setState({title: event.target.value});
+    changeComNmHandler = (event) => {
+        this.setState({ comNm: event.target.value});
     }
 
-    changeContentsHandler = (event) => {
-        this.setState({contents: event.target.value});
+    changeComDescHandler = (event) => {
+        this.setState({comDesc: event.target.value});
+    }
+    changeEduTypeCdHandler = (event) => {
+        this.setState({ eduTypeCd : event.target.value});
+    }
+    changeTelNumHandler = (event) => {
+        this.setState({telNum: event.target.value});
+    }
+    changeAddrHandler = (event) => {
+        this.setState({ addr : event.target.value});
     }
 
-    changeMemberNoHandler = (event) => {
-        this.setState({memberNo: event.target.value});
-    }
 
     createBoard = (event) => {
         event.preventDefault();
         let board = {
-            type: this.state.type,
-            title: this.state.title,
-            contents: this.state.contents,
-            memberNo: this.state.memberNo
+
+            comId: this.state.comId,
+            comNm: this.state.comNm,
+            comDesc: this.state.comDesc,
+            eduTypeCd: this.state.eduTypeCd,
+            telNum: this.state.telNum,
+            addr: this.state.addr,
+
         };
         console.log("board => "+ JSON.stringify(board));
-
-        if (this.state.no === '_create') {
+       
             BoardService.createBoard(board).then(res => {
                 this.props.history.push('/board');
             });
-        } else {
-            BoardService.updateBoard(this.state.no, board).then(res => {
-                this.props.history.push('/board');
-            });
-        }
-    }
+        } 
 
     cancel() {
         this.props.history.push('/board');
     }
 
-    getTitle() {
-        if (this.state.no === '_create') {
-            return <h3 className="text-center">새글을 작성해주세요</h3>
-        } else {
-            return <h3 className="text-center">{this.state.no}글을 수정 합니다.</h3>
-        }
-    }
-
-    // For update function add
-    componentDidMount() {
-        if (this.state.no === '_create') {
-            return
-        } else {
-            BoardService.getOneBoard(this.state.no).then( (res) => {
-                let board = res.data;
-                console.log("board => "+ JSON.stringify(board));
-                
-                this.setState({
-                        type: board.type,
-                        title: board.title,
-                        contents: board.contents,
-                        memberNo: board.memberNo
-                    });
-            });
-        }
-    }
 
     render() {
         return (
@@ -95,34 +80,40 @@ class CreateBoardComponent extends Component {
                 <div className = "container">
                     <div className = "row">
                         <div className = "card col-md-6 offset-md-3 offset-md-3">
-                            {
-                               this.getTitle()
-                            }
+                            <h3 className="text-center"> 기업을 등록해주세요. </h3>
                             <div className = "card-body">
                                 <form>
                                     <div className = "form-group">
-                                        <label> Type </label>
-                                        <select placeholder="type" name="type" className="form-control" 
-                                        value={this.state.type} onChange={this.changeTypeHandler}>
-                                            <option value="1">자유게시판</option>
-                                            <option value="2">질문과 답변</option>
-                                        </select>
+                                        <label> 기업 아이디 </label>
+                                        <input type="text" placeholder="comId" name="comId" className="form-control"
+                                        value={this.state.comId} onChange={this.changeComIdHandler}/>
                                     </div>
                                     <div className = "form-group">
-                                        <label> Title </label>
-                                        <input type="text" placeholder="title" name="title" className="form-control" 
-                                        value={this.state.title} onChange={this.changeTitleHandler}/>
+                                        <label> 기업명 </label>
+                                        <input type="text" placeholder="comNm" name="comNm" className="form-control"
+                                               value={this.state.comNm} onChange={this.changeComNmHandler}/>
                                     </div>
                                     <div className = "form-group">
-                                        <label> Contents  </label>
-                                        <textarea placeholder="contents" name="contents" className="form-control" 
-                                        value={this.state.contents} onChange={this.changeContentsHandler}/>
+                                        <label> 기업 설명 </label>
+                                        <input type="text" placeholder="" name="comDesc" className="form-control"
+                                               value={this.state.comDesc} onChange={this.changeComDescHandler}/>
                                     </div>
                                     <div className = "form-group">
-                                        <label> MemberNo  </label>
-                                        <input placeholder="memberNo" name="memberNo" className="form-control" 
-                                        value={this.state.memberNo} onChange={this.changeMemberNoHandler}/>
+                                        <label> 교육 과정 유형 </label>
+                                        <input type="text" placeholder="eduTypeCd" name="eduTypeCd" className="form-control"
+                                               value={this.state.eduTypeCd} onChange={this.changeEduTypeCdHandler}/>
                                     </div>
+                                    <div className = "form-group">
+                                        <label> 연락처 </label>
+                                        <input type="text" placeholder="telNum" name="telNum" className="form-control"
+                                               value={this.state.telNum} onChange={this.changeTelNumHandler}/>
+                                    </div>
+                                    <div className = "form-group">
+                                        <label> 주소 </label>
+                                        <input type="text" placeholder="addr" name="addr" className="form-control"
+                                               value={this.state.addr} onChange={this.changeAddrHandler}/>
+                                    </div>
+
                                     <button className="btn btn-success" onClick={this.createBoard}>Save</button>
                                     <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{marginLeft:"10px"}}>Cancel</button>
                                 </form>

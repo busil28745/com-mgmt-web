@@ -5,9 +5,11 @@ class ListBoardComponent extends Component {
     constructor(props) {
         super(props)
 
-        this.state = ({ 
+        this.state = { 
             boards: []
-        })
+        }
+
+        this.createBoard = this.createBoard.bind(this);
     }
 
     componentDidMount() {
@@ -16,11 +18,25 @@ class ListBoardComponent extends Component {
         });
     }
 
+    createBoard() {
+        this.props.history.push('/create-board/_create');
+    }
+
+    readBoard(comId) {
+        this.props.history.push(`/read-board/${comId}`);
+    }
+
+
 
     render() {
         return (
             <div>
-                <h2 className="text-center">기업별 관리 페이지</h2>
+                <h2 className="text-center">기업별 관리</h2>
+                
+                <div className= "row">
+                    <button className="btn btn-primary" onClick={this.createBoard}> 기업 등록 </button>
+                </div>
+                
                 <div className ="row">
                     <table className="table table-striped table-bordered">
                         <thead>
@@ -39,7 +55,7 @@ class ListBoardComponent extends Component {
                                     board => 
                                     <tr key = {board.comId}>
                                         <td> {board.comId} </td>
-                                        <td> {board.comNm} </td>
+                                        <td> <a onClick= {()=>this.readBoard(board.comId)}>{board.comNm} </a> </td>
                                         <td> {board.addr} </td>
                                         <td> {board.eduTypeCd} </td>
                                         <td> {board.stuNum} </td>
