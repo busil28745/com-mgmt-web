@@ -7,7 +7,7 @@ class CreateBoardComponent extends Component {
 
         this.state = {
 
-            comId : '',
+            comId: this.props.match.params.comId,
             comNm : '',
             comDesc : '',
             eduTypeCd : '',
@@ -55,26 +55,57 @@ class CreateBoardComponent extends Component {
     createBoard = (event) => {
         event.preventDefault();
         let board = {
-
-            comId: this.state.comId,
-            comNm: this.state.comNm,
-            comDesc: this.state.comDesc,
-            eduTypeCd: this.state.eduTypeCd,
-            telNum: this.state.telNum,
-            addr: this.state.addr,
-
+                    comId: this.state.comId,
+                    comNm: this.state.comNm,
+                    comDesc: this.state.comDesc,
+                    eduTypeCd: this.state.eduTypeCd,
+                    telNum: this.state.telNum,
+                    addr: this.state.addr,
         };
         console.log("board => "+ JSON.stringify(board));
-       
+        if (this.state.comId === '_create') {
             BoardService.createBoard(board).then(res => {
                 this.props.history.push('/board');
             });
-        } 
+        } else {
+            BoardService.updateBoard(this.state.comId, board).then(res => {
+                this.props.history.push('/board');
+            });
+        }
+    }
 
     cancel() {
         this.props.history.push('/board');
     }
 
+    getTitle() {
+        if (this.state.comId === '_create') {
+            return <h3 className="text-center">새 기업을 등록해주세요.</h3>
+        } else {
+            return <h3 className="text-center">{this.state.comId} 내용을 수정 합니다.</h3>
+        }
+    }
+
+    componentDidMount() {
+        if (this.state.comId === '_create') {
+            return
+        } else {
+            BoardService.getOneBoard(this.state.comId).then( (res) => {
+                let board = res.data;
+                console.log("board => "+ JSON.stringify(board));
+                
+                this.setState({
+                    comId: this.state.comId,
+                    comNm: this.state.comNm,
+                    comDesc: this.state.comDesc,
+                    eduTypeCd: this.state.eduTypeCd,
+                    telNum: this.state.telNum,
+                    addr: this.state.addr,
+        
+                    });
+            });
+        }
+    }
 
     render() {
         return (
@@ -82,7 +113,9 @@ class CreateBoardComponent extends Component {
                 <div className = "container">
                     <div className = "row">
                         <div className = "card col-md-6 offset-md-3 offset-md-3">
-                            <h3 className="text-center"> 기업을 등록해주세요. </h3>
+                            {
+                                this.getTitle()
+                            }
                             <div className = "card-body">
                                 <form>
                                     <div className = "form-group">

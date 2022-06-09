@@ -19,7 +19,7 @@ class ListBoardComponent extends Component {
     }
 
     createBoard() {
-        this.props.history.push('/create-board');
+        this.props.history.push('/create-board/_create');
     }
 
     readBoard(comId) {
@@ -31,7 +31,7 @@ class ListBoardComponent extends Component {
     render() {
         return (
             <div>
-                <h2 className="text-center">기업별 관리</h2>
+                <h2 className="text-center">기업별 관리 시스템</h2>
                 
                 <div className= "row">
                     <button className="btn btn-primary" onClick={this.createBoard}> 기업 등록 </button>
