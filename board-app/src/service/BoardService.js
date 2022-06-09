@@ -7,15 +7,15 @@ class BoardService {
     getBoards() {
         return axios.get(BOARD_API_BASE_URL);
     }
-    createBoard(comId) {
-        return axios.post( BOARD_API_BASE_URL , comId );
+    createBoard(board) {
+        return axios.post(BOARD_API_BASE_URL, board);
     }
 
     getOneBoard(comId) {
         return axios.get(BOARD_API_BASE_URL + "/" + comId);
     }
 
-    updateBoard(comId,board) {
+    updateBoard(comId, board) {
         return axios.put(BOARD_API_BASE_URL + "/" + comId , board);
     }
 
