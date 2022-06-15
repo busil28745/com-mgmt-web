@@ -61,7 +61,7 @@ class ReadStudentComponent extends Component {
                             </div>
 
                             <div className = "row">
-                                <label> 연락처 </label> : {this.state.student.telNum}
+                                <label> 연락처 </label> : {this.state.student.stuTelNum}
                             </div>
 
                             <div className = "row">
@@ -73,7 +73,7 @@ class ReadStudentComponent extends Component {
                             </div>
 
                             <div className = "row">
-                                <label> 기업 아이디 </label> : {this.state.student.comId}
+                                <label> 기업 아이디 </label> : {this.state.student.stuComId}
                             </div>
 
 

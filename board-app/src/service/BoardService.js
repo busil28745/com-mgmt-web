@@ -21,27 +21,27 @@ class BoardService {
     }
 
     getOneBoard(comId) {
-        return axios.get(BOARD_API_BASE_URL + + "/company"+ comId);
+        return axios.get(BOARD_API_BASE_URL + + "/company/"+ comId);
     }
 
     getOnestuBoard(studentId) {
-        return axios.get(BOARD_API_BASE_URL + "/student" + studentId);
+        return axios.get(BOARD_API_BASE_URL + "/student/" + studentId);
     }
 
     updateBoard(comId,board) {
-        return axios.put(BOARD_API_BASE_URL + "/company" + comId , board);
+        return axios.put(BOARD_API_BASE_URL + "/company/" + comId , board);
     }
 
     updatestuBoard(studentId,student) {
-        return axios.put(BOARD_API_BASE_URL + "/student" + studentId , student );
+        return axios.put(BOARD_API_BASE_URL + "/student/" + studentId , student );
     }
 
     deleteBoard(comId) {
-        return axios.delete(BOARD_API_BASE_URL + "/company" + comId);
+        return axios.delete(BOARD_API_BASE_URL + "/company/" + comId);
     }
 
     deletestuBoard(studentId) {
-        return axios.delete(BOARD_API_BASE_URL + "/student" + studentId);
+        return axios.delete(BOARD_API_BASE_URL + "/student/" + studentId);
     }
     
 }
