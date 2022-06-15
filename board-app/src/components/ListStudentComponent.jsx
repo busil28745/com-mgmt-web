@@ -56,10 +56,10 @@ class ListStudentComponent extends Component {
                                     <tr key = {student.studentId}>
                                         <td> {student.studentId} </td>
                                         <td> <a onClick= {()=>this.readBoard(student.studentId)}>{student.studentNm} </a> </td>
-                                        <td> {student.telNum} </td>
+                                        <td> {student.stuTelNum} </td>
                                         <td> {student.emal} </td>
                                         <td> {student.majCd} </td>
-                                        <td> {student.comId} </td>
+                                        <td> {student.stuComId} </td>
                                     </tr>
                                 )
                             }

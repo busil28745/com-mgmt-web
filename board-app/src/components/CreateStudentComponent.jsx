@@ -9,19 +9,19 @@ class CreateStudentComponent extends Component {
 
             studentId: this.props.match.params.studentId,
             studentNm : '',
-            telNum : '',
+            StutelNum : '',
             emal : '',
             majCd : '',
-            comId : '',
+            StucomId : '',
 
         }
 
         this.changeStudentIdHandler = this.changeStudentIdHandler.bind(this);
         this.changeStudentNmHandler = this.changeStudentNmHandler.bind(this);
         this.changeEmalHandler = this.changeEmalHandler.bind(this);
-        this.changeTelNumHandler = this.changeTelNumHandler.bind(this);
+        this.changeStuTelNumHandler = this.changeStuTelNumHandler.bind(this);
         this.changeMajCdHandler = this.changeMajCdHandler.bind(this);
-        this.changeComIdHandler = this.changeComIdHandler.bind(this);
+        this.changeStuComIdHandler = this.changeStuComIdHandler.bind(this);
 
         this.createBoard = this.createBoard.bind(this);
     }
@@ -39,24 +39,24 @@ class CreateStudentComponent extends Component {
         this.setState({emal: event.target.value});
     }
 
-    changeTelNumHandler = (event) => {
-        this.setState({telNum: event.target.value});
+    changeStuTelNumHandler = (event) => {
+        this.setState({StutelNum: event.target.value});
     }
 
     changeMajCdHandler = (event) => {
         this.setState({ majCd : event.target.value});
     }
 
-    changeComIdHandler = (event) => {
-        this.setState({ comId : event.target.value});
+    changeStuComIdHandler = (event) => {
+        this.setState({ StucomId : event.target.value});
     }
 
 
     createBoard = (event) => {
         event.preventDefault();
         let student = {
-                    comId: this.state.comId,
-                    telNum: this.state.telNum,
+                    stuComId: this.state.stuComId,
+                    stuTelNum: this.state.stuTelNum,
                     studentId: this.state.studentId,
                     emal: this.state.emal,
                     majCd: this.state.majCd,
@@ -86,7 +86,7 @@ class CreateStudentComponent extends Component {
 
     getTitle() {
         if (this.state.studentId === '_create') {
-            return <h3 className="text-center">새 기업을 등록해주세요.</h3>
+            return <h3 className="text-center">새 학생을 등록해주세요.</h3>
         } else {
             return <h3 className="text-center">{this.state.studentId} 내용을 수정 합니다.</h3>
         }
@@ -101,8 +101,8 @@ class CreateStudentComponent extends Component {
                 console.log("student => "+ JSON.stringify(student));
                 
                 this.setState({
-                    comId: this.state.comId,
-                    telNum: this.state.telNum,
+                    stuComId: this.state.stuComId,
+                    stuTelNum: this.state.stuTelNum,
                     studentId: this.state.studentId,
                     emal: this.state.emal,
                     majCd: this.state.majCd,
@@ -120,7 +120,7 @@ class CreateStudentComponent extends Component {
                 <div className = "container">
                     <div className = "row">
                         <div className = "card col-md-6 offset-md-3 offset-md-3">
-                        <h3 className="text-center">새글을 작성해주세요</h3>
+                        <h3 className="text-center">학생을 등록해주세요!</h3>
                             <div className = "card-body">
                                 <form>
                                     <div className = "form-group">
@@ -135,8 +135,8 @@ class CreateStudentComponent extends Component {
                                     </div>
                                     <div className = "form-group">
                                         <label> 연락처 </label>
-                                        <input type="text" placeholder="telNum" name="telNum" className="form-control"
-                                               value={this.state.telNum} onChange={this.changeTelNumHandler}/>
+                                        <input type="text" placeholder="stuTelNum" name="stuTelNum" className="form-control"
+                                               value={this.state.stuTelNum} onChange={this.changeStuTelNumHandler}/>
                                     </div>
                                     <div className = "form-group">
                                         <label> 이메일 주소 </label>
@@ -150,8 +150,8 @@ class CreateStudentComponent extends Component {
                                     </div>
                                     <div className = "form-group">
                                         <label> 기업 아이디 </label>
-                                        <input type="text" placeholder="comId" name="comId" className="form-control"
-                                               value={this.state.comId} onChange={this.changeComIdHandler}/>
+                                        <input type="text" placeholder="stuComId" name="stuComId" className="form-control"
+                                               value={this.state.stuComId} onChange={this.changeStuComIdHandler}/>
                                     </div>
 
                                     <button className="btn btn-success" onClick={this.createBoard}>Save</button>
