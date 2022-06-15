@@ -13,7 +13,7 @@ class ListStudentComponent extends Component {
     }
 
     componentDidMount() {
-        BoardService.getBoards().then((res) => {
+        BoardService.getstuBoards().then((res) => {
             this.setState({ students: res.data});
         });
     }
