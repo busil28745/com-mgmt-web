@@ -26,6 +26,11 @@ class ListStudentComponent extends Component {
         this.props.history.push(`/readstu-board/${studentId}`);
     }
 
+    sendEmail(){
+        this.props.history.push(`/send-email`);
+    }
+
+
 
 
     render() {
@@ -35,6 +40,20 @@ class ListStudentComponent extends Component {
                 
                 <div className= "row">
                     <button className="btn btn-primary" onClick={this.createBoard}> 학생 등록 </button>
+                </div>
+
+                <div className= "row">
+                    <h2>       </h2>
+                    <h2>       </h2>
+                </div>
+
+                <div className= "row">
+                    <button className="btn btn-primary" onClick={this.sendEmail}> 메일 전송 </button>
+                </div>
+
+                <div className= "row">
+                    <h2>       </h2>
+                    <h2>       </h2>
                 </div>
                 
                 <div className ="row">
@@ -57,7 +76,7 @@ class ListStudentComponent extends Component {
                                         <td> {student.studentId} </td>
                                         <td> <a onClick= {()=>this.readBoard(student.studentId)}>{student.studentNm} </a> </td>
                                         <td> {student.stuTelNum} </td>
-                                        <td> {student.emal} </td>
+                                        <td> {student.emal}</td>
                                         <td> {student.majCd} </td>
                                         <td> {student.stuComId} </td>
                                     </tr>

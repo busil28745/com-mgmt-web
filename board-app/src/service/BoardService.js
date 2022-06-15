@@ -12,6 +12,10 @@ class BoardService {
         return axios.get(BOARD_API_BASE_URL + "/student");
     }
 
+    sendEmail(email){
+        return axios.post( BOARD_API_BASE_URL + "/mail/send" , email );
+    }
+
     createBoard(board) {
         return axios.post( BOARD_API_BASE_URL + "/company", board );
     }

@@ -36,6 +36,11 @@ class ListBoardComponent extends Component {
                 <div className= "row">
                     <button className="btn btn-primary" onClick={this.createBoard}> 기업 등록 </button>
                 </div>
+
+                <div className= "row">
+                    <h2>       </h2>
+                    <h2>       </h2>
+                </div>
                 
                 <div className ="row">
                     <table className="table table-striped table-bordered">
