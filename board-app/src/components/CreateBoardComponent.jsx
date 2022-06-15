@@ -14,6 +14,7 @@ class CreateBoardComponent extends Component {
             telNum : '',
             addr : '',
             stuNum : '',
+            // cOrM : '',
 
         }
 
