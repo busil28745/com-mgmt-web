@@ -7,7 +7,7 @@ class SendEmailComponent extends Component {
 
         this.state = {
 
-            adress : '',
+            emal : this.props.match.params.emal,
             title : '',
             content : '',
 
@@ -22,7 +22,7 @@ class SendEmailComponent extends Component {
 
 
     changeAdressHandler = (event) => {
-        this.setState({ adress : event.target.value});
+        this.setState({ emal : event.target.value});
     }
 
     changeTitleHandler = (event) => {
@@ -39,21 +39,22 @@ class SendEmailComponent extends Component {
     sendEmail = (event) => {
         event.preventDefault();
         let email = {
-                    adress: this.state.adress,
+                    emal: this.state.emal,
                     title: this.state.title,
                     content: this.state.content,
     
         };
 
-         console.log("email => "+ JSON.stringify(email));
+        console.log("email => "+ JSON.stringify(email));
+        console.log("쏴짐?");
         BoardService.sendEmail(email).then(res => {
-            this.props.history.push('/mail/send/');
+            this.props.history.push('/student');
         });
 
     }
 
     cancel() {
-        this.props.history.push('/board');
+        this.props.history.push('/student');
     }
 
     
@@ -70,7 +71,7 @@ class SendEmailComponent extends Component {
                                     <div className = "form-group">
                                         <label> 이메일 주소 </label>
                                         <input type="text" placeholder="adress" name="adress" className="form-control"
-                                        value={this.state.adress} onChange={this.changeAdressHandler}/>
+                                        value={this.state.emal} onChange={this.changeAdressHandler}/>
                                     </div>
                                     <div className = "form-group">
                                         <label> 제목 </label>

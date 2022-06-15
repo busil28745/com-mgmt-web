@@ -13,7 +13,7 @@ class BoardService {
     }
 
     sendEmail(email){
-        return axios.post( BOARD_API_BASE_URL + "/mail/send" , email );
+        return axios.post( BOARD_API_BASE_URL + "/mail", email);
     }
 
     createBoard(board) {
@@ -25,7 +25,7 @@ class BoardService {
     }
 
     getOneBoard(comId) {
-        return axios.get(BOARD_API_BASE_URL + + "/company/"+ comId);
+        return axios.get(BOARD_API_BASE_URL + "/company/"+ comId);
     }
 
     getOnestuBoard(studentId) {

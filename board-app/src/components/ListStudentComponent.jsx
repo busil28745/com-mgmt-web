@@ -26,8 +26,8 @@ class ListStudentComponent extends Component {
         this.props.history.push(`/readstu-board/${studentId}`);
     }
 
-    sendEmail(){
-        this.props.history.push(`/send-email`);
+    sendEmail(emal){
+        this.props.history.push(`/send-email/${emal}`);
     }
 
 
@@ -76,7 +76,7 @@ class ListStudentComponent extends Component {
                                         <td> {student.studentId} </td>
                                         <td> <a onClick= {()=>this.readBoard(student.studentId)}>{student.studentNm} </a> </td>
                                         <td> {student.stuTelNum} </td>
-                                        <td> {student.emal}</td>
+                                        <td> <a onClick= {()=>this.sendEmail(student.emal)}>{student.emal} </a></td>
                                         <td> {student.majCd} </td>
                                         <td> {student.stuComId} </td>
                                     </tr>
